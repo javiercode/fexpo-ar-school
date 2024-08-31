@@ -64,24 +64,15 @@
                     "Psicología"
                 ];
                 let iCarreras = 0;
-
+                el.setAttribute('value', "Las carreras en la UBI son:");
                 var timer = setInterval(function () {
                     iCarreras = (iCarreras + 1) % aCarrera.length;
 
-                    /*var currTime = new Date().getTime();
-                    var diff = endTime - currTime;
-                    if (diff > 0) {
-                        var days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                        var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                        var mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                        var secs = Math.floor((diff % (1000 * 60)) / 1000);
-                        //console.log(days, hours, mins, secs);
-                        var timeRem = days + " días " + hours + " hrs " + mins + " mins " + secs + " segs ";
-                        //console.log(timeRem);
-                    } else {
-                        var timeRem = "YA ES NAVIDAD!";
-                    }*/
-                    el.setAttribute('value', aCarrera[iCarreras]);
+                    setTimeout(() => {
+                        el.setAttribute('value', aCarrera[iCarreras]);
+                    }, 5000);
+                    
+                    
                 }, 10000);
             }
         });
