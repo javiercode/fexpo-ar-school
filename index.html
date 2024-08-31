@@ -55,9 +55,20 @@
 
                 var endTime = new Date("Dec 25, 2024 00:00:00").getTime();
                 var timeRem;
+                
+                const aCarrera = [
+                    "Administracion de Empresas",
+                    "Auditoria",
+                    "Derecho",
+                    "Ingenieria de Sistemas",
+                    "Psicología"
+                ];
+                let iCarreras = 0;
 
                 var timer = setInterval(function () {
-                    var currTime = new Date().getTime();
+                    iCarreras = (iCarreras + 1) % aCarrera.length;
+
+                    /*var currTime = new Date().getTime();
                     var diff = endTime - currTime;
                     if (diff > 0) {
                         var days = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -69,9 +80,9 @@
                         //console.log(timeRem);
                     } else {
                         var timeRem = "YA ES NAVIDAD!";
-                    }
-                    el.setAttribute('value', timeRem);
-                }, 1000);
+                    }*/
+                    el.setAttribute('value', aCarrera[iCarreras]);
+                }, 2000);
             }
         });
 
