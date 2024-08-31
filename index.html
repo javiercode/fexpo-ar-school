@@ -53,27 +53,23 @@
                     return;
                 }
 
-                var endTime = new Date("Dec 25, 2024 00:00:00").getTime();
+                var endTime = new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate()+1).getTime();
                 var timeRem;
                 
-                const aCarrera = [
-                    "Administracion de Empresas",
-                    "Auditoria",
-                    "Derecho",
-                    "Ingenieria de Sistemas",
-                    "Psicología"
-                ];
-                let iCarreras = 0;
-                el.setAttribute('value', "Las carreras en la UBI son:");
                 var timer = setInterval(function () {
-                    iCarreras = (iCarreras + 1) % aCarrera.length;
-
-                    setTimeout(() => {
-                        el.setAttribute('value', aCarrera[iCarreras]);
-                    }, 5000);
-                    
-                    
-                }, 10000);
+                    var currTime = new Date().getTime();
+                    var diff = endTime - currTime;
+                    if (diff > 0) {
+                        var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                        var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        var mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                        var secs = Math.floor((diff % (1000 * 60)) / 1000);
+                        var timeRem = "Falta " + hours + " hrs " + mins + " mins " + secs + " segs, para que acabe el día";
+                    } else {
+                        var timeRem = "Finalmente! La feria empezo.";
+                    }
+                    el.setAttribute('value', timeRem);
+                }, 1000);
             }
         });
 
